@@ -140,6 +140,7 @@ class DescScreenState extends State<DescScreen> {
             )
         ),
         onPressed: ()  {
+          // add item to cart
           _descriptionViewModel.addToCart(productList!,index);
         },
         child: Row(
@@ -173,6 +174,7 @@ class DescScreenState extends State<DescScreen> {
               builder: (context) => IconButton(
                 icon: const Icon(Icons.shopping_basket_outlined),
                 onPressed: () {
+                  // goto cart page
                   _descriptionViewModel.gotoCartPage(context,productList!);
                 },
               ),

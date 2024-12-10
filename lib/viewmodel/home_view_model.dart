@@ -19,7 +19,7 @@ class HomeViewModel with ChangeNotifier {
 
   void fetchProducts() async {
     setProductList(ApiResponse.loading());
-
+    // fetch products from the api
     _homeRepository.fetchProductsListApi().then((data) {
       setProductList(ApiResponse.completed(data));
     }).onError((error, stackTrace) {
@@ -30,8 +30,10 @@ class HomeViewModel with ChangeNotifier {
 
   void addToFav(List<Products> productList, int index) {
     if (productList[index].wishlist == 1) {
+      // remove product from fav list
       productList[index].wishlist = 0;
     } else {
+      // added to fav list
       productList[index].wishlist = 1;
     }
     notifyListeners();

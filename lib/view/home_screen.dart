@@ -153,16 +153,19 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Consumer<HomeViewModel>(
           builder: (context, value, child) {
             switch (value.productList.status) {
+              //if the status is loading
               case Status.loading:
                 return const Center(
                   child: CircularProgressIndicator(
                     color: Colors.grey,
                   ),
                 );
+            //if the status is error
               case Status.error:
                 return Center(
                   child: Image.asset('assets/images/signal.png')
                 );
+            //if the status is completed
               case Status.completed:
                 return ListView.builder(
                     itemCount: value.productList.data!.products!.length,
@@ -182,6 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ):Container(),
                           InkWell(
                             onTap:(){
+                              //goto description page when clicking the item
                               _homeViewModel.gotoDesc(context,value.productList.data!.products!, index);
 
                             },
@@ -220,6 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             height: 40,
                                             child: MaterialButton(
                                                 onPressed: () {
+                                                  // add item to fav list if clicks the fav icon
                                                   _homeViewModel.addToFav(value.productList.data!.products!,index);
                                                 },
                                                 color: AppColors.color_image_bg,

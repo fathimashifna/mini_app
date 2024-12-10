@@ -24,6 +24,7 @@ class CartScreenState extends State<CartScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    //fetch the items added to the cart
     _cartViewModel.getCartItem(widget.productList);
   }
 
